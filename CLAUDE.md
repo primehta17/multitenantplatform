@@ -75,20 +75,20 @@ Mark each item `[x]` when complete.
 > Register an org + first admin, login, protect all future routes with JWT.
 
 **Backend**
-- [ ] Create Organization model (name, slug, preferredCurrency, createdAt)
-- [ ] Create User model (name, email, passwordHash, role, organizationId, createdAt)
-- [ ] POST /api/auth/register — create org + first OrgAdmin, return JWT
-- [ ] POST /api/auth/login — verify credentials, return JWT
-- [ ] `authenticate` middleware — verify JWT, attach req.user to every request
-- [ ] `requireRole('OrgAdmin')` middleware — block non-admins from admin routes
+- [x] Create Organization model (name, slug, preferredCurrency, createdAt)
+- [x] Create User model (name, email, passwordHash, role, organizationId, createdAt)
+- [x] POST /api/auth/register — create org + first OrgAdmin, return JWT
+- [x] POST /api/auth/login — verify credentials, return JWT
+- [x] `authenticate` middleware — verify JWT, attach req.user to every request
+- [x] `requireRole('OrgAdmin')` middleware — block non-admins from admin routes
 
 **Frontend**
-- [ ] Register org page (org name, admin name, email, password)
-- [ ] Login page (email, password)
-- [ ] Store JWT in localStorage on login/register
-- [ ] Auth context (AuthContext.jsx) — expose user, token, login(), logout()
-- [ ] ProtectedRoute component — redirect to /login if no token
-- [ ] Redirect after login: OrgAdmin → /admin, OrgMember → /member
+- [x] Register org page (org name, admin name, email, password)
+- [x] Login page (email, password)
+- [x] Store JWT in localStorage on login/register
+- [x] Auth context (AuthContext.jsx) — expose user, token, login(), logout()
+- [x] ProtectedRoute component — redirect to /login if no token
+- [x] Redirect after login: OrgAdmin → /admin, OrgMember → /member
 
 ---
 
