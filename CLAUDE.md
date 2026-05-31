@@ -55,19 +55,19 @@ Mark each item `[x]` when complete.
 > Scaffolding only — no business logic yet. Just get servers running and connected.
 
 **Backend**
-- [ ] Initialize backend folder structure (routes, controllers, services, models, middleware, config)
-- [ ] Install dependencies (express, mongoose, dotenv, bcryptjs, jsonwebtoken, morgan, cors)
-- [ ] Setup Express server (index.js)
-- [ ] Connect to MongoDB via mongoose
-- [ ] Setup .env with PORT, MONGODB_URI, JWT_SECRET
-- [ ] Add morgan for request logging
-- [ ] Add global error handler middleware
+- [x] Initialize backend folder structure (routes, controllers, services, models, middleware, config)
+- [x] Install dependencies (express, mongoose, dotenv, bcryptjs, jsonwebtoken, morgan, cors)
+- [x] Setup Express server (index.js)
+- [x] Connect to MongoDB via mongoose
+- [x] Setup .env with PORT, MONGODB_URI, JWT_SECRET
+- [x] Add morgan for request logging
+- [x] Add global error handler middleware
 
 **Frontend**
-- [ ] Create React app (Vite)
-- [ ] Install dependencies (axios, react-router-dom, recharts)
-- [ ] Setup Axios instance (src/api/axios.js) with baseURL and JWT interceptor
-- [ ] Setup React Router shell (App.jsx with placeholder routes)
+- [x] Create React app (Vite)
+- [x] Install dependencies (axios, react-router-dom, recharts)
+- [x] Setup Axios instance (src/api/axios.js) with baseURL and JWT interceptor
+- [x] Setup React Router shell (App.jsx with placeholder routes)
 
 ---
 
