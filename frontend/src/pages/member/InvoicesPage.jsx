@@ -13,48 +13,45 @@ export default function InvoicesPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div style={styles.center}>Loading invoices...</div>;
-  if (error) return <div style={{ ...styles.center, color: '#dc2626' }}>{error}</div>;
+  if (loading) return <div className="state-center">Loading invoices...</div>;
+  if (error) return <div className="state-center" style={{ color: '#dc2626' }}>{error}</div>;
+
+  const statusBadge = (s) => {
+    const map = { paid: 'badge-green', pending: 'badge-yellow', failed: 'badge-red' };
+    return <span className={`badge ${map[s] || 'badge-gray'}`}>{s}</span>;
+  };
 
   return (
-    <div style={styles.page}>
-      <h2>My Invoices</h2>
-      {invoices.length === 0 ? (
-        <p style={{ color: '#888' }}>No invoices yet.</p>
-      ) : (
-        <table style={styles.table}>
-          <thead>
-            <tr>
-              {['Description', 'Plan', 'Amount', 'Status', 'Date'].map(h => (
-                <th key={h} style={styles.th}>{h}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {invoices.map(inv => (
-              <tr key={inv._id}>
-                <td style={styles.td}>{inv.description || '—'}</td>
-                <td style={styles.td}>{inv.planId?.name || '—'}</td>
-                <td style={styles.td}>${inv.amount} {inv.currency}</td>
-                <td style={styles.td}>
-                  <span style={{ color: inv.status === 'paid' ? '#16a34a' : '#f59e0b' }}>
-                    {inv.status}
-                  </span>
-                </td>
-                <td style={styles.td}>{new Date(inv.createdAt).toLocaleDateString()}</td>
+    <div className="page">
+      <h1 className="page-title">Invoices</h1>
+      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+        {invoices.length === 0 ? (
+          <div className="state-center">No invoices yet. Subscribe to a plan to get started.</div>
+        ) : (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Plan</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            </thead>
+            <tbody>
+              {invoices.map(inv => (
+                <tr key={inv._id}>
+                  <td>{inv.description || '—'}</td>
+                  <td>{inv.planId?.name || '—'}</td>
+                  <td style={{ fontWeight: 600 }}>${inv.amount} <span style={{ color: '#94a3b8', fontWeight: 400 }}>{inv.currency}</span></td>
+                  <td>{statusBadge(inv.status)}</td>
+                  <td style={{ color: '#64748b' }}>{new Date(inv.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 }
-
-const styles = {
-  page: { padding: 24 },
-  table: { width: '100%', borderCollapse: 'collapse', marginTop: 16 },
-  th: { textAlign: 'left', padding: '10px 12px', background: '#f3f4f6', borderBottom: '1px solid #e5e7eb', fontSize: 13 },
-  td: { padding: '10px 12px', borderBottom: '1px solid #e5e7eb', fontSize: 14 },
-  center: { padding: 40, textAlign: 'center', color: '#888' },
-};
