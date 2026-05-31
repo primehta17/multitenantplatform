@@ -96,17 +96,17 @@ Mark each item `[x]` when complete.
 > Admins create plans. Members see them. This is the product catalog.
 
 **Backend**
-- [ ] Create Plan model (name, price, billingCycle, features[], isActive, organizationId, createdBy)
-- [ ] GET /api/plans — list plans for the user's org (all authenticated users)
-- [ ] POST /api/plans — create plan (OrgAdmin only)
-- [ ] PUT /api/plans/:id — edit plan (OrgAdmin only)
-- [ ] PATCH /api/plans/:id/deactivate — deactivate plan (OrgAdmin only)
+- [x] Create Plan model (name, price, billingCycle, features[], isActive, organizationId, createdBy)
+- [x] GET /api/plans — list plans for the user's org (all authenticated users)
+- [x] POST /api/plans — create plan (OrgAdmin only)
+- [x] PUT /api/plans/:id — edit plan (OrgAdmin only)
+- [x] PATCH /api/plans/:id/deactivate — deactivate plan (OrgAdmin only)
 
 **Frontend**
-- [ ] Admin: Plans list page (table with name, price, billingCycle, status, actions)
-- [ ] Admin: Create/edit plan form (modal or separate page)
-- [ ] Admin: Deactivate plan button with confirmation
-- [ ] Member: View available plans page (cards with features list)
+- [x] Admin: Plans list page (table with name, price, billingCycle, status, actions)
+- [x] Admin: Create/edit plan form (modal or separate page)
+- [x] Admin: Deactivate plan button with confirmation
+- [x] Member: View available plans page (cards with features list)
 
 ---
 
