@@ -28,29 +28,34 @@ export default function RegisterPage() {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
-        <h2>Create your organization</h2>
-        <form onSubmit={handleSubmit}>
-          <input style={styles.input} name="orgName" placeholder="Organization name" value={form.orgName} onChange={handleChange} required />
-          <input style={styles.input} name="name" placeholder="Your name" value={form.name} onChange={handleChange} required />
-          <input style={styles.input} name="email" type="email" placeholder="Email" value={form.email} onChange={handleChange} required />
-          <input style={styles.input} name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} required />
-          {error && <p style={styles.error}>{error}</p>}
-          <button style={styles.button} type="submit" disabled={loading}>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <h2 className="auth-title">Create your organization</h2>
+        <p className="auth-sub">Get started — it only takes a minute.</p>
+        <form className="auth-stack" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="label">Organization name</label>
+            <input className="input" name="orgName" placeholder="Acme Corp" value={form.orgName} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label className="label">Your name</label>
+            <input className="input" name="name" placeholder="Jane Smith" value={form.name} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label className="label">Email</label>
+            <input className="input" name="email" type="email" placeholder="jane@acme.com" value={form.email} onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label className="label">Password</label>
+            <input className="input" name="password" type="password" placeholder="Min 8 characters" value={form.password} onChange={handleChange} required />
+          </div>
+          {error && <div className="alert alert-error">{error}</div>}
+          <button className="btn btn-primary" type="submit" disabled={loading} style={{ marginTop: 4 }}>
             {loading ? 'Creating...' : 'Create Organization'}
           </button>
         </form>
-        <p style={{ marginTop: 16 }}>Already have an account? <Link to="/login">Login</Link></p>
+        <p className="auth-footer">Already have an account? <Link to="/login">Sign in</Link></p>
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f5f5' },
-  card: { background: '#fff', padding: 32, borderRadius: 8, width: 380, boxShadow: '0 2px 12px rgba(0,0,0,0.1)' },
-  input: { display: 'block', width: '100%', padding: '10px 12px', marginBottom: 12, border: '1px solid #ddd', borderRadius: 6, fontSize: 14, boxSizing: 'border-box' },
-  button: { width: '100%', padding: '11px', background: '#2563eb', color: '#fff', border: 'none', borderRadius: 6, fontSize: 15, cursor: 'pointer' },
-  error: { color: '#dc2626', fontSize: 14, marginBottom: 8 },
-};
