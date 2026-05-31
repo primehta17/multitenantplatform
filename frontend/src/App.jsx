@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminPlansPage from './pages/admin/PlansPage';
 import MemberPlansPage from './pages/member/PlansPage';
+import InvoicesPage from './pages/member/InvoicesPage';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/member" element={<ProtectedRoute><Navbar /></ProtectedRoute>}>
             <Route index element={<Navigate to="/member/plans" replace />} />
             <Route path="plans" element={<MemberPlansPage />} />
+            <Route path="invoices" element={<InvoicesPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -132,16 +132,16 @@ Mark each item `[x]` when complete.
 > Every subscription action creates an invoice record. Members can see their billing history.
 
 **Backend**
-- [ ] Create Invoice model (userId, planId, organizationId, amount, currency, status, createdAt, paidAt)
-- [ ] Auto-create invoice inside subscription service on: subscribe, upgrade, downgrade, cancel
-- [ ] Invoice status set to `paid` automatically (no real payment provider)
-- [ ] GET /api/invoices/me — list own invoices (member)
-- [ ] GET /api/invoices — list all org invoices (OrgAdmin only)
+- [x] Create Invoice model (userId, planId, organizationId, amount, currency, status, createdAt, paidAt)
+- [x] Auto-create invoice inside subscription service on: subscribe, upgrade, downgrade, cancel
+- [x] Invoice status set to `paid` automatically (no real payment provider)
+- [x] GET /api/invoices/me — list own invoices (member)
+- [x] GET /api/invoices — list all org invoices (OrgAdmin only)
 
 **Frontend**
-- [ ] Member: Invoice history table (plan name, amount, currency, status, date)
+- [x] Member: Invoice history table (plan name, amount, currency, status, date)
 - [ ] Admin: All org invoices table (user, plan, amount, status, date)
-- [ ] Loading, error, and empty states for both tables
+- [x] Loading, error, and empty states for both tables
 
 ---
 

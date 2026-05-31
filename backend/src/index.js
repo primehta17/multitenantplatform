@@ -7,6 +7,7 @@ import errorHandler from './middleware/errorHandler.js';
 import authRoutes from './routes/auth.js';
 import planRoutes from './routes/plans.js';
 import subscriptionRoutes from './routes/subscriptions.js';
+import invoiceRoutes from './routes/invoices.js';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(morgan('dev'));
 app.use('/api/auth', authRoutes);
 app.use('/api/plans', planRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
+app.use('/api/invoices', invoiceRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
