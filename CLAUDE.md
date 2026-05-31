@@ -114,17 +114,17 @@ Mark each item `[x]` when complete.
 > Members subscribe to plans. One active subscription per user at a time.
 
 **Backend**
-- [ ] Create Subscription model (userId, planId, organizationId, status, startDate, cancelledAt)
-- [ ] POST /api/subscriptions — subscribe to a plan (creates subscription)
-- [ ] PUT /api/subscriptions/:id — upgrade or downgrade (changes plan)
-- [ ] DELETE /api/subscriptions/:id — cancel subscription
-- [ ] GET /api/subscriptions/me — get current user's active subscription
+- [x] Create Subscription model (userId, planId, organizationId, status, startDate, cancelledAt)
+- [x] POST /api/subscriptions — subscribe to a plan (creates subscription)
+- [x] PUT /api/subscriptions/:id — upgrade or downgrade (changes plan)
+- [x] DELETE /api/subscriptions/:id — cancel subscription
+- [x] GET /api/subscriptions/me — get current user's active subscription
 
 **Frontend**
-- [ ] Member: Subscribe button on plan cards (calls POST)
-- [ ] Member: Current plan section — show active plan with upgrade/downgrade/cancel options
-- [ ] Member: Upgrade/downgrade — show other available plans to switch to
-- [ ] Member: Cancel subscription with confirmation dialog
+- [x] Member: Subscribe button on plan cards (calls POST)
+- [x] Member: Current plan section — show active plan with upgrade/downgrade/cancel options
+- [x] Member: Upgrade/downgrade — show other available plans to switch to
+- [x] Member: Cancel subscription with confirmation dialog
 
 ---
 
