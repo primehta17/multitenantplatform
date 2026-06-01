@@ -185,12 +185,12 @@ Mark each item `[x]` when complete.
 ### Phase 8 - Docs
 > README, API docs, Decision log. This is what evaluators read before running your code.
 
-- [ ] README: project overview + what the platform does
-- [ ] README: setup and run instructions (step by step)
-- [ ] README: environment variables table (name, description, example)
-- [ ] README: architecture overview with the 3 key flows
-- [ ] API docs: endpoint table per domain (method, URL, auth required, brief request/response)
-- [ ] Decision log: data model choices, multi-tenant isolation approach, auth strategy, Axios over React Query, vertical slice dev approach
+- [x] README: project overview + what the platform does
+- [x] README: setup and run instructions (step by step)
+- [x] README: environment variables table (name, description, example)
+- [x] README: architecture overview with the 3 key flows
+- [x] API docs: endpoint table per domain (method, URL, auth required, brief request/response)
+- [x] Decision log: data model choices, multi-tenant isolation approach, auth strategy, Axios over React Query, vertical slice dev approach
 
 ---
 
