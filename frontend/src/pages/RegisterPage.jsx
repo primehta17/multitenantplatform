@@ -31,7 +31,7 @@ export default function RegisterPage() {
     <div className="auth-wrapper">
       <div className="auth-card">
         <h2 className="auth-title">Create your organization</h2>
-        <p className="auth-sub">Get started — it only takes a minute.</p>
+        <p className="auth-sub">Get started - it only takes a minute.</p>
         <form className="auth-stack" onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="label">Organization name</label>

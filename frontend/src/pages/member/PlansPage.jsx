@@ -56,7 +56,7 @@ export default function MemberPlansPage() {
       {currentSub && (
         <div className="alert alert-info" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
           <div>
-            <strong>Current plan:</strong> {currentSub.planId?.name} —{' '}
+            <strong>Current plan:</strong> {currentSub.planId?.name} -{' '}
             ${currentSub.planId?.price}/{currentSub.planId?.billingCycle}
           </div>
           <button className="btn btn-danger btn-sm" onClick={handleCancel} disabled={actionLoading === 'cancel'}>

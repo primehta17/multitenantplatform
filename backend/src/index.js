@@ -33,7 +33,7 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
 
-// Error handler — must be last
+// Error handler - must be last
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

@@ -41,8 +41,8 @@ export default function InvoicesPage() {
             <tbody>
               {invoices.map(inv => (
                 <tr key={inv._id}>
-                  <td>{inv.description || '—'}</td>
-                  <td>{inv.planId?.name || '—'}</td>
+                  <td>{inv.description || '-'}</td>
+                  <td>{inv.planId?.name || '-'}</td>
                   <td style={{ fontWeight: 600 }}>${inv.amount} <span style={{ color: '#94a3b8', fontWeight: 400 }}>{inv.currency}</span></td>
                   <td>{statusBadge(inv.status)}</td>
                   <td style={{ color: '#64748b' }}>{new Date(inv.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</td>

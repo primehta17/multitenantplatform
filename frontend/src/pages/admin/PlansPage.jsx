@@ -120,7 +120,7 @@ export default function PlansPage() {
                   <td style={{ fontWeight: 600 }}>{plan.name}</td>
                   <td>${plan.price}</td>
                   <td style={{ textTransform: 'capitalize' }}>{plan.billingCycle}</td>
-                  <td style={{ color: '#64748b', maxWidth: 280 }}>{plan.features?.join(', ') || '—'}</td>
+                  <td style={{ color: '#64748b', maxWidth: 280 }}>{plan.features?.join(', ') || '-'}</td>
                   <td>
                     <span className={`badge ${plan.isActive ? 'badge-green' : 'badge-red'}`}>
                       {plan.isActive ? 'Active' : 'Inactive'}

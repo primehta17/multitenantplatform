@@ -21,7 +21,7 @@ export const getAnalytics = async (user) => {
       { $sort: { count: -1 } },
     ]),
 
-    // 2. MRR — sum of all active plan prices
+    // 2. MRR - sum of all active plan prices
     Subscription.aggregate([
       { $match: { organizationId: orgId, status: 'active' } },
       { $lookup: { from: 'plans', localField: 'planId', foreignField: '_id', as: 'plan' } },
@@ -29,14 +29,14 @@ export const getAnalytics = async (user) => {
       { $group: { _id: null, total: { $sum: '$plan.price' } } },
     ]),
 
-    // 3. Churn — cancellations in last 30 days
+    // 3. Churn - cancellations in last 30 days
     Subscription.countDocuments({
       organizationId: orgId,
       status: 'cancelled',
       cancelledAt: { $gte: thirtyDaysAgo },
     }),
 
-    // 4. Monthly trend — subscriber count per month for last 6 months
+    // 4. Monthly trend - subscriber count per month for last 6 months
     Subscription.aggregate([
       { $match: { organizationId: orgId, startDate: { $gte: sixMonthsAgo } } },
       {

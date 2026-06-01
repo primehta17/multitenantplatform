@@ -67,7 +67,7 @@ export default function AnalyticsPage() {
 
       {/* Monthly trend chart */}
       <div className="card">
-        <h3 style={{ fontSize: 15, fontWeight: 600, marginBottom: 20 }}>New Subscribers — Last 6 Months</h3>
+        <h3 style={{ fontSize: 15, fontWeight: 600, marginBottom: 20 }}>New Subscribers - Last 6 Months</h3>
         {data.monthlyTrend.length === 0 ? (
           <div className="state-center" style={{ padding: 40 }}>No subscription data yet.</div>
         ) : (
