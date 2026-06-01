@@ -8,7 +8,7 @@ export default function UsersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [showForm, setShowForm] = useState(false);
-  const [form, setForm] = useState({ email: '', name: '' });
+  const [form, setForm] = useState({ email: '', name: '', password: '' });
   const [submitting, setSubmitting] = useState(false);
   const [roleLoading, setRoleLoading] = useState('');
 
@@ -31,7 +31,7 @@ export default function UsersPage() {
     setError('');
     try {
       await inviteUser(form);
-      setForm({ email: '', name: '' });
+      setForm({ email: '', name: '', password: '' });
       setShowForm(false);
       fetchUsers();
     } catch (err) {
@@ -71,7 +71,7 @@ export default function UsersPage() {
         <div className="card" style={{ marginBottom: 24 }}>
           <h3 style={{ marginBottom: 20, fontSize: 16 }}>Invite a team member</h3>
           <form onSubmit={handleInvite}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginBottom: 16 }}>
               <div className="form-group">
                 <label className="label">Name</label>
                 <input className="input" placeholder="Jane Smith" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
@@ -80,9 +80,13 @@ export default function UsersPage() {
                 <label className="label">Email address</label>
                 <input className="input" type="email" placeholder="jane@company.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} required />
               </div>
+              <div className="form-group">
+                <label className="label">Temporary password</label>
+                <input className="input" type="password" placeholder="Share with member" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} required />
+              </div>
             </div>
             <div className="alert alert-info" style={{ marginBottom: 16 }}>
-              An invite link would be sent by email in production. For now the user is created with status <strong>invited</strong>.
+              In production an email would be sent automatically. Share the temporary password with the member directly.
             </div>
             <button className="btn btn-primary" type="submit" disabled={submitting}>
               {submitting ? 'Inviting...' : 'Send Invite'}
