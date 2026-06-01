@@ -8,7 +8,8 @@ import UsersPage from './pages/admin/UsersPage';
 import AnalyticsPage from './pages/admin/AnalyticsPage';
 import MemberPlansPage from './pages/member/PlansPage';
 import InvoicesPage from './pages/member/InvoicesPage';
-import Navbar from './components/Navbar';
+import AdminLayout from './components/AdminLayout';
+import MemberLayout from './components/MemberLayout';
 
 function App() {
   return (
@@ -19,14 +20,14 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
 
-          <Route path="/admin" element={<ProtectedRoute role="OrgAdmin"><Navbar /></ProtectedRoute>}>
+          <Route path="/admin" element={<ProtectedRoute role="OrgAdmin"><AdminLayout /></ProtectedRoute>}>
             <Route index element={<Navigate to="/admin/plans" replace />} />
             <Route path="plans" element={<AdminPlansPage />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="analytics" element={<AnalyticsPage />} />
           </Route>
 
-          <Route path="/member" element={<ProtectedRoute><Navbar /></ProtectedRoute>}>
+          <Route path="/member" element={<ProtectedRoute><MemberLayout /></ProtectedRoute>}>
             <Route index element={<Navigate to="/member/plans" replace />} />
             <Route path="plans" element={<MemberPlansPage />} />
             <Route path="invoices" element={<InvoicesPage />} />
