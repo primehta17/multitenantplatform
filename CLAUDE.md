@@ -149,14 +149,14 @@ Mark each item `[x]` when complete.
 > Admins can see who is in their org, invite new users, and change roles.
 
 **Backend**
-- [ ] GET /api/users — list all users in org (OrgAdmin only)
-- [ ] POST /api/users/invite — create user with status `invited`, role OrgMember (mocked, no email sent)
-- [ ] PATCH /api/users/:id/role — change user role (OrgAdmin only)
+- [x] GET /api/users — list all users in org (OrgAdmin only)
+- [x] POST /api/users/invite — create user with status `invited`, role OrgMember (mocked, no email sent)
+- [x] PATCH /api/users/:id/role — change user role (OrgAdmin only)
 
 **Frontend**
-- [ ] Admin: Users list page (table with name, email, role, status badges)
-- [ ] Admin: Invite user form (email field, submits to POST /api/users/invite)
-- [ ] Admin: Change role dropdown inline in the table
+- [x] Admin: Users list page (table with name, email, role, status badges)
+- [x] Admin: Invite user form (email field, submits to POST /api/users/invite)
+- [x] Admin: Change role dropdown inline in the table
 
 ---
 

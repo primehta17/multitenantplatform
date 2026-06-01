@@ -4,6 +4,7 @@ import ProtectedRoute from './router/ProtectedRoute';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminPlansPage from './pages/admin/PlansPage';
+import UsersPage from './pages/admin/UsersPage';
 import MemberPlansPage from './pages/member/PlansPage';
 import InvoicesPage from './pages/member/InvoicesPage';
 import Navbar from './components/Navbar';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/admin" element={<ProtectedRoute role="OrgAdmin"><Navbar /></ProtectedRoute>}>
             <Route index element={<Navigate to="/admin/plans" replace />} />
             <Route path="plans" element={<AdminPlansPage />} />
+            <Route path="users" element={<UsersPage />} />
           </Route>
 
           <Route path="/member" element={<ProtectedRoute><Navbar /></ProtectedRoute>}>

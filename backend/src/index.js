@@ -8,6 +8,7 @@ import authRoutes from './routes/auth.js';
 import planRoutes from './routes/plans.js';
 import subscriptionRoutes from './routes/subscriptions.js';
 import invoiceRoutes from './routes/invoices.js';
+import userRoutes from './routes/users.js';
 
 dotenv.config();
 
@@ -23,9 +24,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/plans', planRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
 app.use('/api/invoices', invoiceRoutes);
+app.use('/api/users', userRoutes);
 
 // Health check
-app.get('/api/health', (req, res) => {
+app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
 
