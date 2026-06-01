@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminPlansPage from './pages/admin/PlansPage';
 import UsersPage from './pages/admin/UsersPage';
+import AnalyticsPage from './pages/admin/AnalyticsPage';
 import MemberPlansPage from './pages/member/PlansPage';
 import InvoicesPage from './pages/member/InvoicesPage';
 import Navbar from './components/Navbar';
@@ -22,6 +23,7 @@ function App() {
             <Route index element={<Navigate to="/admin/plans" replace />} />
             <Route path="plans" element={<AdminPlansPage />} />
             <Route path="users" element={<UsersPage />} />
+            <Route path="analytics" element={<AnalyticsPage />} />
           </Route>
 
           <Route path="/member" element={<ProtectedRoute><Navbar /></ProtectedRoute>}>

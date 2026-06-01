@@ -164,21 +164,21 @@ Mark each item `[x]` when complete.
 > The dashboard evaluators will look at most carefully. Aggregation + external API.
 
 **Backend**
-- [ ] Create services/currencyService.js — fetch rates from ExchangeRate-API, handle errors gracefully
-- [ ] GET /api/analytics — OrgAdmin only, returns all metrics in one response
-- [ ] Query: active subscriber count grouped by plan name
-- [ ] Query: estimated MRR (sum of active subscription plan prices for current month)
-- [ ] Query: churn count (subscriptions cancelled in last 30 days)
-- [ ] Query: monthly trend — subscriber count or revenue for last 6 months
-- [ ] Convert MRR to org's preferredCurrency using currencyService
+- [x] Create services/currencyService.js — fetch rates from ExchangeRate-API, handle errors gracefully
+- [x] GET /api/analytics — OrgAdmin only, returns all metrics in one response
+- [x] Query: active subscriber count grouped by plan name
+- [x] Query: estimated MRR (sum of active subscription plan prices for current month)
+- [x] Query: churn count (subscriptions cancelled in last 30 days)
+- [x] Query: monthly trend — subscriber count or revenue for last 6 months
+- [x] Convert MRR to org's preferredCurrency using currencyService
 
 **Frontend**
-- [ ] Admin: Analytics dashboard page
-- [ ] Active subscribers card (number + breakdown by plan)
-- [ ] MRR card (converted currency amount)
-- [ ] Churn card (cancellations in last 30 days)
-- [ ] Bar or line chart — monthly trend (Recharts)
-- [ ] Loading, error, and empty states for all cards
+- [x] Admin: Analytics dashboard page
+- [x] Active subscribers card (number + breakdown by plan)
+- [x] MRR card (converted currency amount)
+- [x] Churn card (cancellations in last 30 days)
+- [x] Bar or line chart — monthly trend (Recharts)
+- [x] Loading, error, and empty states for all cards
 
 ---
 
