@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { getAnalytics } from '../../api/analytics';
+import axios from '../../api/axios';
+
+const CURRENCIES = ['USD', 'EUR', 'GBP', 'INR', 'JPY', 'CAD', 'AUD', 'SGD', 'AED'];
 
 const MetricCard = ({ label, value, sub, color = 'var(--primary)' }) => (
   <div className="card metric-card">
@@ -24,16 +27,42 @@ export default function AnalyticsPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [currency, setCurrency] = useState('USD');
+  const [currencyLoading, setCurrencyLoading] = useState(false);
 
-  useEffect(() => {
+  const load = () => {
+    setLoading(true);
     getAnalytics()
-      .then(({ data }) => setData(data))
+      .then(({ data }) => {
+        setData(data);
+        setCurrency(data.mrr.currency);
+      })
       .catch(() => setError('Failed to load analytics'))
       .finally(() => setLoading(false));
-  }, []);
+  };
 
-  if (loading) return <div className="state-center"><div className="state-center-icon">📊</div>Loading analytics...</div>;
-  if (error) return <div className="state-center" style={{ color: 'var(--danger)' }}>{error}</div>;
+  useEffect(() => { load(); }, []);
+
+  const handleCurrencyChange = async (newCurrency) => {
+    setCurrencyLoading(true);
+    try {
+      await axios.patch('/organizations/currency', { currency: newCurrency });
+      setCurrency(newCurrency);
+      load();
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to update currency');
+    } finally {
+      setCurrencyLoading(false);
+    }
+  };
+
+  if (loading) return (
+    <div className="empty-state" style={{ marginTop: 80 }}>
+      <div className="empty-state-icon">📊</div>
+      <div className="empty-state-title">Loading analytics...</div>
+    </div>
+  );
+  if (error) return <div className="page"><div className="alert alert-error">{error}</div></div>;
 
   const churnColor = data.churnLast30Days > 0 ? 'var(--danger)' : '#16a34a';
 
@@ -42,7 +71,24 @@ export default function AnalyticsPage() {
       <div className="page-header">
         <div>
           <h1 className="page-title">Analytics</h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: 13, marginTop: 2 }}>Live metrics for your organization</p>
+          <p className="page-subtitle">Live metrics for your organization</p>
+        </div>
+
+        {/* Currency selector — this is where the ExchangeRate API is triggered */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: '#fff', border: '1px solid var(--border)', borderRadius: 8, padding: '8px 14px', boxShadow: 'var(--shadow-sm)' }}>
+          <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
+            💱 MRR Currency
+          </span>
+          <select
+            className="input"
+            style={{ border: 'none', padding: '2px 6px', fontSize: 14, fontWeight: 600, width: 80, cursor: 'pointer' }}
+            value={currency}
+            disabled={currencyLoading}
+            onChange={e => handleCurrencyChange(e.target.value)}
+          >
+            {CURRENCIES.map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
+          {currencyLoading && <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>Converting...</span>}
         </div>
       </div>
 
@@ -51,17 +97,19 @@ export default function AnalyticsPage() {
         <MetricCard
           label="Active Subscribers"
           value={data.totalActiveSubscribers}
-          sub={data.subscribersByPlan.length > 0 ? data.subscribersByPlan.map(p => `${p.plan}: ${p.count}`).join(' · ') : 'No active subscriptions'}
+          sub={data.subscribersByPlan.length > 0
+            ? data.subscribersByPlan.map(p => `${p.plan}: ${p.count}`).join(' · ')
+            : 'No active subscriptions'}
           color="var(--primary)"
         />
         <MetricCard
-          label="Monthly Recurring Revenue"
+          label={`MRR (${data.mrr.currency})`}
           value={`${data.mrr.currency} ${data.mrr.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
-          sub="Estimated for current month"
+          sub={data.mrr.currency === 'USD' ? 'No conversion needed' : `Converted from USD via ExchangeRate-API`}
           color="#16a34a"
         />
         <MetricCard
-          label="Churn - Last 30 Days"
+          label="Churn — Last 30 Days"
           value={data.churnLast30Days}
           sub={data.churnLast30Days === 0 ? 'No cancellations' : `${data.churnLast30Days} cancellation${data.churnLast30Days > 1 ? 's' : ''}`}
           color={churnColor}
@@ -74,9 +122,9 @@ export default function AnalyticsPage() {
           <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)', marginBottom: 16 }}>Subscribers by Plan</div>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {data.subscribersByPlan.map(p => (
-              <div key={p.plan} style={{ background: 'var(--primary-light)', border: '1px solid #bfdbfe', borderRadius: 10, padding: '14px 24px', textAlign: 'center', minWidth: 100 }}>
+              <div key={p.plan} style={{ background: 'var(--primary-light)', border: '1px solid var(--primary-border)', borderRadius: 10, padding: '14px 24px', textAlign: 'center', minWidth: 100 }}>
                 <div style={{ fontSize: 28, fontWeight: 900, color: 'var(--primary)', letterSpacing: -1 }}>{p.count}</div>
-                <div style={{ fontSize: 12, color: '#3b82f6', fontWeight: 600, marginTop: 2 }}>{p.plan}</div>
+                <div style={{ fontSize: 12, color: 'var(--primary)', fontWeight: 600, marginTop: 2 }}>{p.plan}</div>
               </div>
             ))}
           </div>
@@ -88,9 +136,10 @@ export default function AnalyticsPage() {
         <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--text-primary)', marginBottom: 4 }}>New Subscribers per Month</div>
         <div style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 24 }}>Last 6 months</div>
         {data.monthlyTrend.length === 0 ? (
-          <div className="state-center" style={{ padding: 48 }}>
-            <div className="state-center-icon">📈</div>
-            No subscription data yet - subscribe to a plan to start tracking.
+          <div className="empty-state" style={{ padding: 48 }}>
+            <div className="empty-state-icon">📈</div>
+            <div className="empty-state-title">No data yet</div>
+            <div className="empty-state-sub">Subscribe to a plan to start tracking monthly trends.</div>
           </div>
         ) : (
           <ResponsiveContainer width="100%" height={260}>
@@ -99,7 +148,7 @@ export default function AnalyticsPage() {
               <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
               <YAxis allowDecimals={false} tick={{ fontSize: 12, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
               <Tooltip content={<CustomTooltip />} cursor={{ fill: '#f8fafc' }} />
-              <Bar dataKey="newSubscribers" fill="#2563eb" radius={[5, 5, 0, 0]} maxBarSize={52} />
+              <Bar dataKey="newSubscribers" fill="var(--primary)" radius={[5, 5, 0, 0]} maxBarSize={52} />
             </BarChart>
           </ResponsiveContainer>
         )}

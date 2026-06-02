@@ -10,6 +10,7 @@ import subscriptionRoutes from './routes/subscriptions.js';
 import invoiceRoutes from './routes/invoices.js';
 import userRoutes from './routes/users.js';
 import analyticsRoutes from './routes/analytics.js';
+import organizationRoutes from './routes/organizations.js';
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use('/api/subscriptions', subscriptionRoutes);
 app.use('/api/invoices', invoiceRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/organizations', organizationRoutes);
 
 // Health check
 app.get('/api/health', (_req, res) => {
