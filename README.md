@@ -30,7 +30,7 @@ Think of it as a simplified Stripe + Chargebee - each organization is fully isol
 - A MongoDB Atlas account (free tier works) or local MongoDB installation
 - An ExchangeRate-API key (free at [exchangerate-api.com](https://www.exchangerate-api.com))
 
-### 1. Clone and install dependencies
+### 1. Clone and install dependencies 
 
 ```bash
 git clone <repo-url>
