@@ -62,7 +62,7 @@ EXCHANGE_RATE_API_KEY=your_api_key_here
 cd backend
 npm run dev     # starts with nodemon on port 5000
 
-API_URL=http://localhost:5000
+curl http://localhost:5000/api/health
 ```
 
 ### 4. Run the frontend
