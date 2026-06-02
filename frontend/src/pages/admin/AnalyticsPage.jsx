@@ -74,7 +74,7 @@ export default function AnalyticsPage() {
           <p className="page-subtitle">Live metrics for your organization</p>
         </div>
 
-        {/* Currency selector — this is where the ExchangeRate API is triggered */}
+        {/* Currency selector - this is where the ExchangeRate API is triggered */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: '#fff', border: '1px solid var(--border)', borderRadius: 8, padding: '8px 14px', boxShadow: 'var(--shadow-sm)' }}>
           <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
             💱 MRR Currency
@@ -109,7 +109,7 @@ export default function AnalyticsPage() {
           color="#16a34a"
         />
         <MetricCard
-          label="Churn — Last 30 Days"
+          label="Churn - Last 30 Days"
           value={data.churnLast30Days}
           sub={data.churnLast30Days === 0 ? 'No cancellations' : `${data.churnLast30Days} cancellation${data.churnLast30Days > 1 ? 's' : ''}`}
           color={churnColor}

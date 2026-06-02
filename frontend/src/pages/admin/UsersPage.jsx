@@ -115,7 +115,7 @@ export default function UsersPage() {
                         <option value="OrgMember">OrgMember</option>
                         <option value="OrgAdmin">OrgAdmin</option>
                       </select>
-                    ) : <span style={{ color: 'var(--text-subtle)', fontSize: 13 }}>—</span>}
+                    ) : <span style={{ color: 'var(--text-subtle)', fontSize: 13 }}>-</span>}
                   </td>
                 </tr>
               ))}

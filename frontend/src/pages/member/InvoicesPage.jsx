@@ -54,8 +54,8 @@ export default function InvoicesPage() {
               <tbody>
                 {invoices.map(inv => (
                   <tr key={inv._id}>
-                    <td style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{inv.description || '—'}</td>
-                    <td>{inv.planId?.name || '—'}</td>
+                    <td style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{inv.description || '-'}</td>
+                    <td>{inv.planId?.name || '-'}</td>
                     <td>
                       <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>${inv.amount}</span>
                       <span style={{ color: 'var(--text-muted)', fontSize: 12, marginLeft: 4 }}>{inv.currency}</span>

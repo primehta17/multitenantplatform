@@ -36,7 +36,7 @@ export default function LoginPage() {
           <div className="auth-left-sub">Multi-tenant platform for organizations to manage plans, users, and billing analytics in one place.</div>
         </div>
         <div className="auth-left-quote">
-          "Built with a clean layered architecture — routes, controllers, services, and models — so every feature is easy to reason about and extend."
+          "Built with a clean layered architecture - routes, controllers, services, and models - so every feature is easy to reason about and extend."
         </div>
       </div>
 

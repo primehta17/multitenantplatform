@@ -33,17 +33,17 @@ export default function RegisterPage() {
         </div>
         <div>
           <div className="auth-left-headline">Everything your team needs to manage subscriptions</div>
-          <div className="auth-left-sub">Set up in minutes. Create plans, invite your team, and track revenue — all from one dashboard.</div>
+          <div className="auth-left-sub">Set up in minutes. Create plans, invite your team, and track revenue - all from one dashboard.</div>
         </div>
         <div className="auth-left-quote">
-          "Multi-tenant by design — every organization's data is fully isolated. One platform, unlimited organizations."
+          "Multi-tenant by design - every organization's data is fully isolated. One platform, unlimited organizations."
         </div>
       </div>
 
       <div className="auth-right">
         <div className="auth-form-wrap">
           <h1 className="auth-title">Create your organization</h1>
-          <p className="auth-sub">Get started for free — no credit card required</p>
+          <p className="auth-sub">Get started for free - no credit card required</p>
 
           <form className="auth-stack" onSubmit={handleSubmit}>
             <div className="form-group">

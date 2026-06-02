@@ -109,7 +109,7 @@ export default function PlansPage() {
                     <td style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{p.name}</td>
                     <td><span style={{ fontWeight: 700, fontSize: 15 }}>${p.price}</span></td>
                     <td style={{ textTransform: 'capitalize' }}>{p.billingCycle}</td>
-                    <td style={{ color: 'var(--text-muted)', maxWidth: 260 }}>{p.features?.join(' · ') || '—'}</td>
+                    <td style={{ color: 'var(--text-muted)', maxWidth: 260 }}>{p.features?.join(' · ') || '-'}</td>
                     <td><span className={`badge ${p.isActive ? 'badge-green' : 'badge-red'}`}>{p.isActive ? 'Active' : 'Inactive'}</span></td>
                     <td style={{ textAlign: 'right' }}>
                       {p.isActive && (
