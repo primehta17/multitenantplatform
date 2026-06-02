@@ -4,6 +4,7 @@ import ProtectedRoute from './router/ProtectedRoute';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminPlansPage from './pages/admin/PlansPage';
+import AdminInvoicesPage from './pages/admin/InvoicesPage';
 import UsersPage from './pages/admin/UsersPage';
 import AnalyticsPage from './pages/admin/AnalyticsPage';
 import MemberPlansPage from './pages/member/PlansPage';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/admin" element={<ProtectedRoute role="OrgAdmin"><AdminLayout /></ProtectedRoute>}>
             <Route index element={<Navigate to="/admin/plans" replace />} />
             <Route path="plans" element={<AdminPlansPage />} />
+            <Route path="invoices" element={<AdminInvoicesPage />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="analytics" element={<AnalyticsPage />} />
           </Route>

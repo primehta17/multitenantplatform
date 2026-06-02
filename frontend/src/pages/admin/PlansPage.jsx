@@ -80,7 +80,7 @@ export default function PlansPage() {
               <label className="label">Features <span style={{ color: 'var(--text-subtle)', fontWeight: 400 }}>(comma separated)</span></label>
               <input className="input" placeholder="Unlimited users, API access, Priority support" value={form.features} onChange={e => setForm({...form, features: e.target.value})} />
             </div>
-            <div style={{ display: 'flex', gap: 10 }}>
+            <div className="action-row">
               <button className="btn btn-primary" type="submit" disabled={submitting}>{submitting ? 'Creating...' : 'Create Plan'}</button>
               <button className="btn btn-outline" type="button" onClick={() => setShowForm(false)}>Cancel</button>
             </div>

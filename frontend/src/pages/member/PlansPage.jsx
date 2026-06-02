@@ -58,7 +58,7 @@ export default function MemberPlansPage() {
       </div>
 
       {currentSub && (
-        <div style={{ background: 'var(--primary-light)', border: '1px solid #bfdbfe', borderRadius: 10, padding: '14px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
+        <div className="sub-banner">
           <div>
             <span style={{ fontSize: 13, fontWeight: 600, color: '#1d4ed8' }}>Current plan: </span>
             <span style={{ fontSize: 13, color: '#1e40af' }}>
@@ -91,13 +91,13 @@ export default function MemberPlansPage() {
                   </div>
                 </div>
 
-                <div className="divider" style={{ marginBottom: 16 }} />
+                <div className="plan-divider" />
 
                 <ul className="plan-features">
                   {plan.features?.length > 0
                     ? plan.features.map((f, i) => (
                         <li key={i} className="plan-feature">
-                          <span className="plan-feature-check">✓</span> {f}
+                          <span className="plan-check">✓</span> {f}
                         </li>
                       ))
                     : <li className="plan-feature" style={{ color: 'var(--text-muted)' }}>No features listed</li>

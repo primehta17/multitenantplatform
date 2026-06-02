@@ -77,7 +77,7 @@ export default function UsersPage() {
                 <input className="input" type="password" placeholder="Share with member" value={form.password} onChange={e => setForm({...form, password: e.target.value})} required />
               </div>
             </div>
-            <div style={{ display: 'flex', gap: 10 }}>
+            <div className="action-row">
               <button className="btn btn-primary" type="submit" disabled={submitting}>{submitting ? 'Inviting...' : 'Send Invite'}</button>
               <button className="btn btn-outline" type="button" onClick={() => setShowForm(false)}>Cancel</button>
             </div>
