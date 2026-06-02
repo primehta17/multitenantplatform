@@ -34,7 +34,8 @@ Think of it as a simplified Stripe + Chargebee - each organization is fully isol
 
 ```bash
 git clone https://github.com/primehta17/multitenantplatform.git
-cd assignment
+
+cd multitenantplatform
 
 # Install backend dependencies
 cd backend && npm install
