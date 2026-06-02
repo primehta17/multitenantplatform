@@ -60,7 +60,10 @@ export default function AdminInvoicesPage() {
               <tbody>
                 {invoices.map((invoice) => (
                   <tr key={invoice._id}>
-                    <td style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{invoice.userId || 'N/A'}</td>
+                    <td>
+                      <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{invoice.userId?.name || '—'}</div>
+                      <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>{invoice.userId?.email || ''}</div>
+                    </td>
                     <td>{invoice.planId?.name || 'N/A'}</td>
                     <td>
                       <span style={{ fontWeight: 700, color: 'var(--text-primary)' }}>${invoice.amount}</span>

@@ -11,10 +11,11 @@ export const getMyInvoices = async (user) =>{
   .sort({createdAt: -1})
 }
 
-export const getAllInvoices= async(user) =>{
-  return await Invoice.find({ organizationId: user.orgId })
-  .populate('planId', 'name billingCycle')
-  .sort({createdAt: -1})
-}
+export const getAllInvoices = async (user) => {
+  return Invoice.find({ organizationId: user.orgId })
+    .populate('planId', 'name billingCycle')
+    .populate('userId', 'name email')
+    .sort({ createdAt: -1 });
+};
 
 
