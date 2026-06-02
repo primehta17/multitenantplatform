@@ -105,6 +105,37 @@ ExchangeRate-API (external)
   Called from currencyService for MRR currency conversion
 ```
 
+### Module Interactions
+
+```
+Organization
+  └── has many Users (organizationId on User)
+  └── has many Plans (organizationId on Plan)
+
+User
+  └── belongs to one Organization
+  └── has many Subscriptions (userId on Subscription)
+  └── has many Invoices (userId on Invoice)
+
+Plan
+  └── belongs to one Organization
+  └── referenced by Subscriptions and Invoices
+
+Subscription
+  └── links User ↔ Plan within an Organization
+  └── triggers Invoice creation as a side effect (in service layer)
+  └── one active subscription per user at a time (enforced in subscriptionService)
+
+Invoice
+  └── auto-created by subscriptionService on every subscription change
+  └── links User ↔ Plan ↔ Organization for billing history
+
+ExchangeRate-API
+  └── called only by currencyService
+  └── currencyService called only by analyticsService (for MRR conversion)
+  └── never called directly from controllers
+```
+
 ### Folder Structure
 
 ```
@@ -341,7 +372,30 @@ When `subscriptionService.subscribe()` runs, it also calls `invoiceService.creat
 
 `currencyService.convertCurrency()` wraps the ExchangeRate-API call in a try/catch. If the external API is down or returns an error, we log a warning and return the original USD amount. The analytics dashboard always works - just shows USD in the worst case.
 
-### 8. Mocked email invites
+### 8. Frontend state management — useState + useEffect with Axios
+
+Each page manages its own loading, error, and data state using React's built-in `useState` and `useEffect`. API calls go through the Axios instance directly, no additional library.
+
+**Why not Redux?** Redux adds significant boilerplate (actions, reducers, selectors) and is justified when many unrelated components need the same shared state. Here, each page fetches its own data independently. Global shared state is minimal — just the auth token and user, which lives in `AuthContext`.
+
+**Why not React Query?** React Query handles caching, background refetching, and deduplication automatically — powerful, but adds a dependency and abstraction layer that's harder to explain in a walkthrough. For this assignment, the simpler `useState + useEffect` pattern makes the data flow obvious and easy to reason about: fetch on mount, show loading, show error, show data.
+
+**The pattern used across every page:**
+```javascript
+const [data, setData] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState('');
+
+useEffect(() => {
+  apiCall().then(({ data }) => setData(data))
+           .catch(() => setError('...'))
+           .finally(() => setLoading(false));
+}, []);
+```
+
+**Trade-off:** No caching — navigating away and back re-fetches. Acceptable for an internal dashboard used by small teams. React Query would be the right upgrade for a production app with many users.
+
+### 9. Mocked email invites
 
 Inviting a user creates them in the DB with a temporary password set by the admin. In production, the flow would be: create user with a signed invite token, email them the link, they click and set their own password. Mocked here because email infrastructure is out of scope for this assignment.
 
