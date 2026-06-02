@@ -33,7 +33,7 @@ Think of it as a simplified Stripe + Chargebee - each organization is fully isol
 ### 1. Clone and install dependencies 
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/primehta17/multitenantplatform.git
 cd assignment
 
 # Install backend dependencies
