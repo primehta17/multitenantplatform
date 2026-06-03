@@ -12,6 +12,18 @@ const signToken = (user) => {
 };
 
 export const registerOrg = async ({ orgName, name, email, password }) => {
+  if (!password || password.length < 8) {
+    const err = new Error('Password must be at least 8 characters');
+    err.status = 400;
+    throw err;
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    const err = new Error('Invalid email address');
+    err.status = 400;
+    throw err;
+  }
+
   const slug = orgName.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now();
 
   const org = await Organization.create({ name: orgName, slug });

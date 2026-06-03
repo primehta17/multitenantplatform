@@ -60,7 +60,7 @@ export default function RegisterPage() {
             </div>
             <div className="form-group">
               <label className="label">Password</label>
-              <input className="input" type="password" placeholder="Min. 8 characters" value={form.password} onChange={e => setForm({...form, password: e.target.value})} required />
+              <input className="input" type="password" placeholder="Min. 8 characters" value={form.password} onChange={e => setForm({...form, password: e.target.value})} required minLength={8} />
             </div>
             {error && <div className="alert alert-error">{error}</div>}
             <button className="btn btn-primary" type="submit" disabled={loading} style={{ height: 44, fontSize: 15, marginTop: 4 }}>
