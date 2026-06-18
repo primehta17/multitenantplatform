@@ -5,6 +5,11 @@ A full-stack SaaS platform where multiple organizations (tenants) can sign up, m
 Think of it as a simplified Stripe + Chargebee - each organization is fully isolated from others, manages its own billing plans, and gets a dashboard showing revenue and churn.
 
 ---
+## Demo Video
+
+Watch the project demo here:
+
+📹 [Demo Video (Google Drive)](https://drive.google.com/file/d/1IwStIDcFQ7pUjrVO6gmu8jsCogTjbq2Z/view?usp=sharing)
 
 ## Tech Stack
 
